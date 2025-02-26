@@ -8,10 +8,10 @@ Numero de clientes           500
 
 
 
-Espera promedio en la cola      0.933 minutos
+Espera promedio en la cola      1.109 minutos
 
-Numero promedio en cola     0.134
+Numero promedio en cola     0.171
 
-Uso del servidor          0.285
+Uso del servidor          0.298
 
-Tiempo de terminacion de la simulacion    3476.772 minutos
+Tiempo de terminacion de la simulacion    3422.579 minutos
