@@ -38,8 +38,6 @@ To execute the simulation, the main.cpp file must be compiled and executed. The 
 
 ## Authors
 
-Jhonatan Steven Rodriguez Ibañez \
-Edgar Daniel Gonzalez Diaz \
-Bryan Smith Colorado Lopez \
-Miguel Angel Puentes Cespedes \
-Juan Camilo Zambrano Lopez
+Juan Sebastian Peñafiel Ojeda \
+Mateo Gutierrez Melo \
+Carlos Jimenez \
