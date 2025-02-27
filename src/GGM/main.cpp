@@ -204,7 +204,7 @@ void inicializar(char *archivo_parametros, char *archivo_salida)
     }
   }
 
-  float tiempo_entre_llegadas = expon(media_entre_llegadas);
+  float tiempo_entre_llegadas = generar_gamma(3.5, lambda1);
 
   /* Guardar tiempo de llegada en hoja de cálculo */
   if (reporte_xls->tiempos)
@@ -273,7 +273,8 @@ void llegada(void)
 {
   float espera;
 
-  float tiempo_entre_llegadas = expon(media_entre_llegadas);
+  float tiempo_entre_llegadas = generar_gamma(3.5, lambda1);
+
 
   int servidor_libre;
   bool servidor_desocupado_encontrado = false;
@@ -331,7 +332,7 @@ void llegada(void)
     estado_servidores[servidor_libre] = OCUPADO;
 
     /* Programa una salida ( servicio terminado ). */
-    float tiempo_atencion = expon(media_atencion);
+    float tiempo_atencion = generar_gamma(4.3,lambda2);
     tiempo_sig_evento[num_eventos + servidor_libre] = tiempo_simulacion + tiempo_atencion;
 
     /* Guardar tiempo de atención en hoja de cálculo */
@@ -396,7 +397,7 @@ void salida(void)
     ++num_clientes_espera;
 
     /* Guardar tiempo de atención en hoja de cálculo */
-    float tiempo_atencion = expon(media_atencion);
+    float tiempo_atencion = generar_gamma(4.3, lambda2);
 
     /*
       Mueve cada cliente en la cola ( si los hay ) una posicion hacia adelante

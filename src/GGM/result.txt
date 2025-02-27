@@ -12,12 +12,12 @@ Numero de servidores             2
 
 
 
-Espera promedio en la cola      0.017 minutos
+Espera promedio en la cola      0.005 minutos
 
-Numero promedio en cola  0.001710
+Numero promedio en cola  0.006655
 
-Uso promedio de los servidores          0.100
+Uso promedio de los servidores          0.395
 
-Tiempo de terminacion de la simulacion     973.045 minutos
+Tiempo de terminacion de la simulacion      79.844 minutos
 
-Valor formula C de Erlang (simulado)    0.019105
+Valor formula C de Erlang (simulado)    0.142215
