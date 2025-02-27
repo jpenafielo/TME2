@@ -1,4 +1,4 @@
-Sistema de Colas M/M/2
+Sistema de Colas G/G/2
 
 Tiempo promedio de llegada      9.600 minutos
 
@@ -20,4 +20,4 @@ Uso promedio de los servidores          0.100
 
 Tiempo de terminacion de la simulacion     973.045 minutos
 
-Valor formula C de Erlang (simulado)    0.019105Lambda1     5.000000
+Valor formula C de Erlang (simulado)    0.019105

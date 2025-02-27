@@ -123,7 +123,7 @@ void inicializar(char *archivo_parametros, char *archivo_salida)
   total_de_esperas = 0.0;
   area_num_entra_cola = 0.0;
   tiempo_servidores_ocupados = 0.0;
-  lambda1 = 5.0;
+  lambda1 = 0.0;
   lambda2 = 0.0;
 
 
@@ -153,7 +153,7 @@ void inicializar(char *archivo_parametros, char *archivo_salida)
 
   /* Lee los parametros de entrada. */
 
-  fscanf(parametros, "%f %f %f %d %d, %f, %f",
+  fscanf(parametros, "%f %f %f %d %d %f %f",
          &media_entre_llegadas, &media_atencion,
          &tiempo_simulacion_maxima,
          &num_esperas_requerido, &numero_servidores, &lambda1, &lambda2);
@@ -436,7 +436,7 @@ void reportes(void)
   /* Escribe en el archivo de salida los encabezados del reporte y los
    * parametros iniciales */
 
-  fprintf(resultados, "Sistema de Colas M/M/%d\n\n", numero_servidores);
+  fprintf(resultados, "Sistema de Colas G/G/%d\n\n", numero_servidores);
   fprintf(resultados, "Tiempo promedio de llegada%11.3f minutos\n\n",
           media_entre_llegadas);
   fprintf(resultados, "Tiempo promedio de atencion%16.3f minutos\n\n",
@@ -448,7 +448,6 @@ void reportes(void)
   /* Calcula y estima los estimados de las medidas deseadas de desempe�o */
   fprintf(resultados, "\n\nEspera promedio en la cola%11.3f minutos\n\n",
           total_de_esperas / num_clientes_espera);
-  fprintf(resultados, "Lambda1 %12.6f",lambda1);
   fprintf(resultados, "Numero promedio en cola%10.6f\n\n",
           area_num_entra_cola / tiempo_simulacion);
   fprintf(resultados, "Uso promedio de los servidores%15.3f\n\n",
