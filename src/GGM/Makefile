@@ -12,7 +12,7 @@ endif
 
 SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.cpp' -print | sed -e 's/ /\\ /g')
 HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
-INCLUDES = -I "./../../libxl-4.1.2/include_cpp/" -I "/usr/include/eigen3"
+INCLUDES = -I "./../../libxl-4.1.2/include_cpp/"
 
 main: $(SRCS) $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(SRCS) ${INCLUDES} -L ${LIBPATH} -lxl -Wl,-rpath,$(LIBPATH) ${LINK} -o "$@"

@@ -16,7 +16,7 @@ int sig_tipo_evento, num_clientes_espera, num_esperas_requerido, num_eventos,
 
 float area_num_entra_cola, media_entre_llegadas,
     media_atencion, tiempo_simulacion, tiempo_llegada[LIMITE_COLA + 1],
-    tiempo_ultimo_evento, total_de_esperas, tiempo_simulacion_maxima, tiempo_servidores_ocupados;
+    tiempo_ultimo_evento, total_de_esperas, tiempo_simulacion_maxima, tiempo_servidores_ocupados, lambda1, lambda2;
 
 std::vector<float> tiempo_sig_evento, area_estado_servidor;
 std::vector<int> estado_servidores;
@@ -32,7 +32,7 @@ void actualizar_estad_prom_tiempo(void);
 float expon(float mean);
 float sum(std::vector<float> array);
 void registrar_ocurrencia_evento(char *);
-
+float generar_gamma(float alpha, float lambda);
 // Write and log events to excel's
 using namespace libxl;
 
@@ -123,6 +123,9 @@ void inicializar(char *archivo_parametros, char *archivo_salida)
   total_de_esperas = 0.0;
   area_num_entra_cola = 0.0;
   tiempo_servidores_ocupados = 0.0;
+  lambda1 = 5.0;
+  lambda2 = 0.0;
+
 
   /* Inicializando variables de registro de eventos y reporte de tiempos en Hoja de cálculo */
 
@@ -150,10 +153,10 @@ void inicializar(char *archivo_parametros, char *archivo_salida)
 
   /* Lee los parametros de entrada. */
 
-  fscanf(parametros, "%f %f %f %d %d",
+  fscanf(parametros, "%f %f %f %d %d, %f, %f",
          &media_entre_llegadas, &media_atencion,
          &tiempo_simulacion_maxima,
-         &num_esperas_requerido, &numero_servidores);
+         &num_esperas_requerido, &numero_servidores, &lambda1, &lambda2);
 
   /* Especifica el numero de eventos para la funcion controltiempo. */
   num_eventos = 2;
@@ -223,7 +226,7 @@ void inicializar(char *archivo_parametros, char *archivo_salida)
 
   tiempo_sig_evento.resize(num_eventos + numero_servidores + 1);
 
-  tiempo_sig_evento[1] = tiempo_simulacion + tiempo_entre_llegadas;
+  tiempo_sig_evento[1] = tiempo_simulacion + generar_gamma(3.5, lambda1);
   tiempo_sig_evento[2] = tiempo_simulacion_maxima;
   for (int i = 3; i <= num_eventos + numero_servidores; i++)
   {
@@ -445,6 +448,7 @@ void reportes(void)
   /* Calcula y estima los estimados de las medidas deseadas de desempe�o */
   fprintf(resultados, "\n\nEspera promedio en la cola%11.3f minutos\n\n",
           total_de_esperas / num_clientes_espera);
+  fprintf(resultados, "Lambda1 %12.6f",lambda1);
   fprintf(resultados, "Numero promedio en cola%10.6f\n\n",
           area_num_entra_cola / tiempo_simulacion);
   fprintf(resultados, "Uso promedio de los servidores%15.3f\n\n",
@@ -453,6 +457,7 @@ void reportes(void)
           tiempo_simulacion);
   fprintf(resultados, "Valor formula C de Erlang (simulado)%12.6f",
           tiempo_servidores_ocupados / tiempo_simulacion);
+ 
 
   /* Guardar reporte de registro de eventos en hoja de cálculo */
   if (reporte_xls->book)
@@ -537,4 +542,12 @@ void registrar_ocurrencia_evento(char *nombre_de_evento)
         reporte_xls->fila_eventos_actual++,
         numero_servidores + 3, num_entra_cola);
   }
+}
+
+float generar_gamma(float alpha, float lambda) {  
+  float suma = 0.0;  
+  for (int i = 0; i < alpha; i++) {  
+      suma += expon(1.0/lambda);  
+  }  
+  return suma;  
 }

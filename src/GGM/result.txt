@@ -1,23 +1,23 @@
-Sistema de Colas M/M/0
+Sistema de Colas M/M/2
 
-Tiempo promedio de llegada      7.000 minutos
+Tiempo promedio de llegada      9.600 minutos
 
 Tiempo promedio de atencion           2.000 minutos
 
-Tiempo de simulacion         500.000 minutos
+Tiempo de simulacion      100000.000 minutos
 
-Numero de clientes             3
+Numero de clientes           100
 
-Numero de servidores             0
+Numero de servidores             2
 
 
 
-Espera promedio en la cola       -nan minutos
+Espera promedio en la cola      0.017 minutos
 
-Numero promedio en cola 37.689762
+Numero promedio en cola  0.001710
 
-Uso promedio de los servidores           -nan
+Uso promedio de los servidores          0.100
 
-Tiempo de terminacion de la simulacion     500.000 minutos
+Tiempo de terminacion de la simulacion     973.045 minutos
 
-Valor formula C de Erlang (simulado)    1.000000
+Valor formula C de Erlang (simulado)    0.019105Lambda1     5.000000
