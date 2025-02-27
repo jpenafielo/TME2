@@ -1,4 +1,4 @@
-Sistema de Colas G/G/5
+Sistema de Colas M/M/5
 
 Tiempo promedio de llegada      9.600 minutos
 
@@ -16,8 +16,8 @@ Espera promedio en la cola      0.000 minutos
 
 Numero promedio en cola  0.000000
 
-Uso promedio de los servidores          0.165
+Uso promedio de los servidores          0.039
 
-Tiempo de terminacion de la simulacion     800.262 minutos
+Tiempo de terminacion de la simulacion    9734.143 minutos
 
 Valor formula C de Erlang (simulado)    0.000000
